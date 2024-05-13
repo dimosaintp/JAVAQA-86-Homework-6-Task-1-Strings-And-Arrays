@@ -37,9 +37,9 @@ public class StatsServiceTest {
     @Test
     public void peakSalesDay() {
         StatsService service = new StatsService();
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        long expectedPeakSalesDay = 11;
-        long actualPeakSalesDay = service.peakSalesDay(sales);
+        int[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expectedPeakSalesDay = 8;
+        int actualPeakSalesDay = service.peakSalesDay(sales);
         Assertions.assertEquals(expectedPeakSalesDay, actualPeakSalesDay);
 
         System.out.println("Номер последнего месяца, в котором был пик продаж: " + service.peakSalesDay(sales));
@@ -63,7 +63,7 @@ public class StatsServiceTest {
     @Test
     public void monthsSalesBelowAverage() {
         StatsService service = new StatsService();
-        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18,};
         long expectedMonthsSalesBelowAverage = 5;
         long actualMonthsSalesBelowAverage = service.monthsSalesBelowAverage(sales);
         Assertions.assertEquals(expectedMonthsSalesBelowAverage, actualMonthsSalesBelowAverage);

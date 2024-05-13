@@ -24,14 +24,14 @@ public class StatsService {
 
     // Номер последнего месяца, в котором был пик продаж.
 
-    public int peakSalesDay(long[] sales) {
+    public static int peakSalesDay(int[] sales) {
         int peak = 0;
         for (int i = 0; i < sales.length; i++) {
-            if (i > peak) {
+            if (sales[i] >= sales[peak]) {
                 peak = i;
             }
         }
-        return peak;
+        return peak +1;
     }
 
     // Номер последнего месяца, в котором был минимум продаж.
