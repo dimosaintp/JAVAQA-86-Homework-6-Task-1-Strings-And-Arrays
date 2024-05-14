@@ -4,34 +4,31 @@ public class StatsService {
 
     // Сумма всех продаж.
 
-    public int sumOfAllSales(long[] sales) {
-        int sum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum += sales[i];
+    public long sumOfAllSales(long[] sales) {
+        long sum = 0;
+        for (long sale : sales) {
+            sum += sale;
         }
         return sum;
     }
 
     // Средняя сумма продаж в месяц.
 
-    public int averageSalesPerMonth(long[] sales) {
-        int average = 0;
-        for (int i = 0; i < sales.length; i++) {
-            average += sales[i];
-        }
-        return average / sales.length;
+    public long averageSalesPerMonth(long[] sales) {
+        long sum = sumOfAllSales(sales);
+        return sum / sales.length;
     }
 
     // Номер последнего месяца, в котором был пик продаж.
 
-    public static int peakSalesDay(int[] sales) {
+    public int peakSalesDay(int[] sales) {
         int peak = 0;
         for (int i = 0; i < sales.length; i++) {
             if (sales[i] >= sales[peak]) {
                 peak = i;
             }
         }
-        return peak +1;
+        return peak + 1;
     }
 
     // Номер последнего месяца, в котором был минимум продаж.
@@ -48,34 +45,24 @@ public class StatsService {
 
     // Количество месяцев, в которых продажи были ниже среднего.
 
-    public int monthsSalesBelowAverage(long[] sales) {
-        int average = 0;
-        for (int i = 0; i < sales.length; i++) {
-            average += sales[i];
-        }
-        average = average / sales.length;
-
+    public long monthsSalesBelowAverage(long[] sales) {
+        long average = averageSalesPerMonth(sales);
         long belowAverage = 0;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < average) {
+        for (long sale : sales) {
+            if (sale < average) {
                 belowAverage++;
             }
         }
-        return (int) belowAverage;
+        return belowAverage;
     }
 
     // Количество месяцев, в которых продажи были выше среднего.
 
-    public int monthsSalesHigherAverage(long[] sales) {
-        int average = 0;
-        for (int i = 0; i < sales.length; i++) {
-            average += sales[i];
-        }
-        average = average / sales.length;
-
+    public long monthsSalesHigherAverage(long[] sales) {
+        long average = averageSalesPerMonth(sales);
         long higherAverage = 0;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > average) {
+        for (long sale : sales) {
+            if (sale > average) {
                 higherAverage++;
             }
         }
